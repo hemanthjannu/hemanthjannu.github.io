@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
 :root {
     --linkedin-blue: #0a66c2;
     --linkedin-blue-hover: #004182;
@@ -15,7 +17,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.5;
@@ -115,25 +117,68 @@ body {
 }
 
 .profile-background {
-    background: linear-gradient(to right, #004182, #0a66c2);
-    height: 200px;
+    height: 24px;
     position: relative;
+    background: transparent;
 }
+
+.profile-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 150%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% -50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    opacity: 0.8;
+}
+
+.profile-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .profile-content {
-    padding: 84px 24px 24px;
+    padding: 24px;
 }
 
 .profile-info h1 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 4px;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
 .headline {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
     color: var(--secondary-text);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .location {
@@ -210,49 +255,68 @@ body {
     margin-bottom: 16px;
 }
 
-.experience-item, .education-item {
-    display: flex;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border-color);
+#experience h3, #education h3 {
+    color: var(--text-color);
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 8px;
 }
 
-.experience-item:last-child, .education-item:last-child {
+.experience-item {
+    display: flex;
+    gap: 16px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-color);
+    text-align: justify;
+}
+
+.experience-item:last-child {
     border-bottom: none;
 }
 
 .experience-icon, .education-icon {
     width: 48px;
     height: 48px;
-    background: #f3f2ef;
+    background: #f0f7ff;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--secondary-text);
+    color: var(--text-color);
+    flex-shrink: 0;
+}
+
+.experience-details, .education-details {
+    flex: 1;
 }
 
 .experience-details h4, .education-details h4 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.company, .school {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
     margin-bottom: 4px;
 }
 
-.company, .school, .university {
+.experience-details .location, .university {
     font-size: 14px;
-    color: var(--secondary-text);
-    margin-bottom: 4px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-style: italic;
 }
 
 .client {
     font-size: 14px;
     color: var(--text-color);
     margin-bottom: 4px;
-}
-
-.location {
-    font-size: 14px;
-    color: var(--secondary-text);
 }
 
 .skills-grid {
@@ -420,4 +484,35 @@ body {
     .memory-game {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+.education-item {
+    display: flex;
+    gap: 16px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-color);
+    text-align: justify;
+}
+
+.education-item:last-child {
+    border-bottom: none;
+}
+
+.education-details {
+    flex: 1;
+}
+
+.education-details h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.university {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-style: italic;
 } 
