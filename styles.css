@@ -259,7 +259,6 @@ body {
     color: var(--text-color);
     font-size: 22px;
     margin-bottom: 20px;
-    border-bottom: 2px solid var(--text-color);
     padding-bottom: 8px;
 }
 
